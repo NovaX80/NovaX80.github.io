@@ -1,0 +1,147 @@
+/* =======================
+   Reset and Base Styles
+   ======================= */
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #000;
+  color: #505050;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+
+/* =======================
+   Top Bar Styles
+   ======================= */
+.top-bar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: calc(100vw - 40px);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #111;
+  padding: 8px 15px;
+  box-shadow: 0 0 10px #555;
+  border: 2px solid #505050;
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+
+/* =======================
+   Buttons in Top Bar
+   ======================= */
+.top-bar button,
+.top-bar .top-btn {
+  background: transparent;
+  border: none;
+  color: #505050;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.top-bar button:hover,
+.top-bar .top-btn:hover {
+  background: #505050;
+  color: #000;
+  box-shadow: 0 0 10px #555;
+}
+
+
+/* =======================
+   Discord Icon Styles
+   ======================= */
+.discord-icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border: 2px solid #505050;
+  border-radius: 6px;
+  box-sizing: border-box;
+  overflow: hidden;
+  filter: grayscale(100%) brightness(1.2);
+  transition: filter 0.5s ease, border-color 0.5s ease, transform 0.5s ease;
+}
+
+.discord-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+.discord-icon:hover {
+  filter: grayscale(30%) brightness(1.5) blur(1px);
+  border-color: #eee;
+  transform: scale(1.05);
+}
+
+
+/* =======================
+   Comet3 Container Styles
+   ======================= */
+.container {
+  box-shadow: 0 0 20px #555;
+  width: calc(100vw - 100px);
+  margin: 100px auto 0;
+  text-align: center;
+  background: #111;
+  padding: 20px;
+  border: 2px solid #505050;
+  border-radius: 6px;
+}
+
+.container h1 {
+  color: #505050;
+  font-size: 3rem;
+}
+
+.container p {
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+
+/* =======================
+   Download Button Styles
+   ======================= */
+.btn {
+  overflow: hidden;
+  filter: grayscale(100%) brightness(1.2);
+  display: inline-block;
+  padding: 12px 32px;
+  font-size: 1.2rem;
+  color: #000;
+  background: #505050;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 1rem;
+  border: none;
+}
+
+.btn:hover {
+  background: #bbb;
+  filter: grayscale(30%) brightness(1.5) blur(1px);
+  transform: scale(1.05);
+}
+
+
+/* =======================
+   Utility / Fixes
+   ======================= */
+.section {
+  margin-top: 200px;
+}
+
+
