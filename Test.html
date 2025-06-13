@@ -12,6 +12,7 @@
       font-family: Arial, sans-serif;
       overflow-x: hidden;
       color: white;
+      scroll-behavior: smooth;
     }
 
     body::before {
@@ -81,7 +82,6 @@
       transition: filter 0.3s ease;
     }
 
-    /* Glowing effect on hover */
     .icon-button:hover {
       opacity: 1;
       transform: scale(1.1);
@@ -90,7 +90,7 @@
         0 0 15px #3399ff,
         0 0 20px #007acc;
     }
-    /* Make icon color full on hover */
+
     .icon-button:hover img {
       filter: none;
     }
@@ -112,103 +112,172 @@
       border-color: white;
     }
 
-    .parent-box {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 140vh;
-      width: 45vw;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-      background-color: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 12px;
-      z-index: 1;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 10px;
-      width: 100%;
-      height: 100%;
-    }
-
-    .frame {
-      background-color: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    /* The textbox style */
+    #textbox1 {
+      margin-top: 24px;
+      padding: 12px 20px;
+      background-color: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
       color: white;
       font-size: 1.2em;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: slideUp 0.6s forwards ease-out;
+      display: inline-block;
+      max-width: 100%;
     }
 
-    .frame:nth-child(1) { animation-delay: 0.2s; }
-    .frame:nth-child(2) { animation-delay: 0.4s; }
-    .frame:nth-child(3) { animation-delay: 0.6s; }
-    .frame:nth-child(4) { animation-delay: 0.8s; }
+    .parent-box {
+  position: absolute;
+  left: 50%;
+  top: 120vh;
+  transform: translateX(-50%);
+  width: 90vw;
+  height: 490px;
+  background-color: rgba(15, 15, 20, 0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 25px rgba(0, 123, 255, 0.5);
+  border-radius: 14px;
+  padding: 30px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
 
-    @keyframes slideUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+  width: 100%;
+  height: 100%;
+}
+
+.frame {
+  background-color: rgba(10, 10, 15, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow:
+    0 10px 18px rgba(0, 123, 255, 0.3),
+    0 5px 10px rgba(0, 0, 0, 0.7);
+  color: #eee;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 28px 28px 28px 24px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 190px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
+  user-select: text;
+}
+
+.frame:hover {
+  box-shadow:
+    0 14px 30px rgba(0, 123, 255, 0.6),
+    0 9px 20px rgba(0, 0, 0, 0.85);
+  transform: translateY(-4px);
+}
+
+.frame img {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+}
+
+.frame > div {
+  flex: 1;
+  color: #dbe9ff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.frame strong {
+  font-size: 1.3rem;
+  color: #74a9ff;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.frame:nth-child(1) { animation-delay: 0.15s; }
+.frame:nth-child(2) { animation-delay: 0.35s; }
+.frame:nth-child(3) { animation-delay: 0.55s; }
+.frame:nth-child(4) { animation-delay: 0.75s; }
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
   </style>
 </head>
 <body>
 
-  <!-- Top section (fixed) -->
+  <!-- Top section -->
   <div class="fixed-top">
     <div class="main-text">Join Our Discord</div>
     <div class="controls-row">
-      <a
-        class="icon-button"
-        href="https://discord.gg/QQkbcYxVdt"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Join Discord"
-        id="discord-btn"
-      >
+      <a class="icon-button" href="https://discord.gg/QQkbcYxVdt" target="_blank" title="Join Discord">
         <img src="https://i.pinimg.com/736x/b5/84/b1/b584b1776f49b350c54e5172f9a1f102.jpg" alt="Discord Icon" />
       </a>
-      <a
-        class="icon-button"
-        href="https://www.youtube.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Visit YouTube"
-        id="youtube-btn"
-      >
+      <a class="icon-button" href="https://www.youtube.com/@c00lkidd-is-back" target="_blank" title="Visit YouTube">
         <img src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png" alt="YouTube Icon" />
       </a>
-      <button class="top-btn">Home</button>
-      <button class="top-btn">FAQ</button>
-      <button class="top-btn">SMH</button>
+      <button class="top-btn" id="homeBtn">Home</button>
+      <button class="top-btn" onclick="
+        let base = location.href;
+        if (base.endsWith('index.html')) {
+          base = base.replace('index.html', '');
+        }
+        location.href = base + 'faq.html';
+      ">FAQ</button>
+      <button class="top-btn" id="Extrabtn">Extra</button>
+    </div>
+
+    <!-- Text Box 1 below buttons -->
+    <div id="textbox1" class="frame" style="opacity:1; transform:none; animation:none;">
+	    <strong>Welcome to the Future of Exploiting</strong><br><br>
+      This platform is dedicated to teaching advanced techniques for customizing and modifying your Roblox experience.<br><br>
+      To access tools such as executors and scripts, you can join our official Discord server by clicking the button above.
+	</div>
+  </div>
+
+  <!-- Box section -->
+  <div class="parent-box" id="parent-boxs">
+    <div class="parent-box" id="parent-boxs">
+  <div class="grid">
+    <div class="frame">
+      <img src="https://i.pinimg.com/736x/b5/84/b1/b584b1776f49b350c54e5172f9a1f102.jpg" alt="Discord Icon" />
+      <div>
+        <strong>Welcome to the Future of Game Modification</strong>
+        This platform is dedicated to teaching advanced techniques for customizing and enhancing your Roblox experience.
+        To access powerful executors and scripts, please join our official Discord server by clicking the button below.
+      </div>
+    </div>
+
+    <div class="frame">
+      <img src="https://i.pinimg.com/736x/b5/84/b1/b584b1776f49b350c54e5172f9a1f102.jpg" alt="Discord Icon" />
+      <div>Box 2</div>
+    </div>
+
+    <div class="frame">
+      <img src="https://i.pinimg.com/736x/b5/84/b1/b584b1776f49b350c54e5172f9a1f102.jpg" alt="Discord Icon" />
+      <div>Box 3</div>
+    </div>
+
+    <div class="frame">
+      <img src="https://i.pinimg.com/736x/b5/84/b1/b584b1776f49b350c54e5172f9a1f102.jpg" alt="Discord Icon" />
+      <div>Box 4</div>
     </div>
   </div>
-  
-  <div class="frame">Text Box 1</div>
-  
-  <!-- Box section (scrolls with content) -->
-  <div class="parent-box">
-    <div class="grid">
-      <div class="frame">Box 1</div>
-      <div class="frame">Box 2</div>
-      <div class="frame">Box 3</div>
-      <div class="frame">Box 4</div>
-    </div>
+</div>
+
   </div>
 
   <audio id="click-sound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3" preload="auto"></audio>
@@ -216,12 +285,20 @@
   <script>
     const clickSound = document.getElementById('click-sound');
 
-    // Play click sound on icon click
+    // Icon click sound
     document.querySelectorAll('.icon-button').forEach(button => {
       button.addEventListener('click', () => {
         clickSound.currentTime = 0;
         clickSound.play();
       });
+    });
+
+    // Smooth scroll to Text Box 1 on Home button click
+    document.getElementById('homeBtn').addEventListener('click', () => {
+      document.getElementById('textbox1').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('Extrabtn').addEventListener('click', () => {
+      document.getElementById('parent-boxs').scrollIntoView({ behavior: 'smooth' });
     });
   </script>
 
