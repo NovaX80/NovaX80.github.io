@@ -234,6 +234,7 @@
         let base = location.href;
         if (base.endsWith('index.html')) {
           base = base.replace('index.html', '');
+	  base = base.replace('Test.html', '');
         }
         location.href = base + 'faq.html';
       ">FAQ</button>
