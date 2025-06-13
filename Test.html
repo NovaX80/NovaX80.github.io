@@ -31,7 +31,7 @@
     }
 
     .fixed-top {
-      position: fixed;
+      position: absolute;
       top: 10vh;
       left: 50%;
       transform: translateX(-50%);
@@ -59,30 +59,40 @@
       flex-wrap: wrap;
     }
 
-    .discord-icon {
+    .icon-button {
       width: 54px;
       height: 54px;
-      border: 2px solid #505050;
       border-radius: 6px;
       overflow: hidden;
-      filter: grayscale(100%) brightness(1.2);
-      transition: filter 0.5s ease, border-color 0.5s ease, transform 0.5s ease;
+      opacity: 0.6;
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.4s ease;
       cursor: pointer;
       display: block;
       flex-shrink: 0;
+      filter: grayscale(100%) brightness(1.2);
     }
 
-    .discord-icon img {
+    .icon-button img {
       width: 100%;
       height: 100%;
       display: block;
       border-radius: 4px;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
     }
 
-    .discord-icon:hover {
-      filter: grayscale(30%) brightness(1.5) blur(1px);
-      border-color: #eee;
-      transform: scale(1.05);
+    /* Glowing effect on hover */
+    .icon-button:hover {
+      opacity: 1;
+      transform: scale(1.1);
+      box-shadow:
+        0 0 8px #66ccff,
+        0 0 15px #3399ff,
+        0 0 20px #007acc;
+    }
+    /* Make icon color full on hover */
+    .icon-button:hover img {
+      filter: none;
     }
 
     .top-btn {
@@ -164,20 +174,33 @@
     <div class="main-text">Join Our Discord</div>
     <div class="controls-row">
       <a
-        class="discord-icon"
+        class="icon-button"
         href="https://discord.gg/QQkbcYxVdt"
         target="_blank"
         rel="noopener noreferrer"
         title="Join Discord"
+        id="discord-btn"
       >
         <img src="https://i.pinimg.com/736x/b5/84/b1/b584b1776f49b350c54e5172f9a1f102.jpg" alt="Discord Icon" />
+      </a>
+      <a
+        class="icon-button"
+        href="https://www.youtube.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Visit YouTube"
+        id="youtube-btn"
+      >
+        <img src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png" alt="YouTube Icon" />
       </a>
       <button class="top-btn">Home</button>
       <button class="top-btn">FAQ</button>
       <button class="top-btn">SMH</button>
     </div>
   </div>
-
+  
+  <div class="frame">Text Box 1</div>
+  
   <!-- Box section (scrolls with content) -->
   <div class="parent-box">
     <div class="grid">
@@ -187,6 +210,20 @@
       <div class="frame">Box 4</div>
     </div>
   </div>
+
+  <audio id="click-sound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3" preload="auto"></audio>
+
+  <script>
+    const clickSound = document.getElementById('click-sound');
+
+    // Play click sound on icon click
+    document.querySelectorAll('.icon-button').forEach(button => {
+      button.addEventListener('click', () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      });
+    });
+  </script>
 
 </body>
 </html>
